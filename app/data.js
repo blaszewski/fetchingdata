@@ -50,8 +50,8 @@ Promise.all([
     document.querySelector('.list').innerHTML = createDom(dataToRender);
     // pagination();
 
-    console.log("data to render: ", dataToRender);
+    // console.log("data to render: ", dataToRender);
 
   })
-  .catch();
+  .catch(err => console.log('Rejected: ', err.message));
 
