@@ -13,7 +13,7 @@ function createDom(data) {
 
     for (const user of company.users) {
       if (user.uris.company === company.uri)
-        template += `<div class="user text-center p-2">${user.name}, <strong>${user.email}</strong></div>`;
+        template += `<div class="user text-center p-2">Name: <strong>${user.name}</strong>, e-mail: <strong>${user.email}</strong></div>`;
     }
 
     template += `</div></div>`;
