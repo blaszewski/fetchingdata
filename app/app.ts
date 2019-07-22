@@ -6,7 +6,7 @@ let currentPage: number = 1;
 
 const next: any = document.querySelector('.next');
 const prev: any = document.querySelector('.prev');
-const list: any = document.querySelector(".list");
+const list: any = document.querySelector('.list');
 
 function createDom(data: Company[]): string {
   let template: string = '<div class="container">';
