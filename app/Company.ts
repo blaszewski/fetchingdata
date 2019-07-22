@@ -5,7 +5,7 @@ export class Company {
   users: User[];
   uri: string;
 
-  constructor(name: string, users: [], uri: string) {
+  constructor(name: string, users: User[], uri: string) {
     this.name = name;
     this.users = users;
     this.uri = uri;
