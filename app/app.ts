@@ -1,12 +1,39 @@
-import { Company } from "./Company";
-import { User } from "./User";
-
 const limit: number = 20;
 let currentPage: number = 1;
 
 const next: any = document.querySelector('.next');
 const prev: any = document.querySelector('.prev');
 const list: any = document.querySelector('.list');
+
+class Company {
+  name: string;
+  users: User[];
+  uri: string;
+
+  constructor(name: string, users: User[], uri: string) {
+    this.name = name;
+    this.users = users;
+    this.uri = uri;
+  }
+}
+class User {
+  name: string;
+  email: string;
+  uris: Uris;
+
+  constructor(name: string, email: string, uris: Uris) {
+    this.name = name;
+    this.email = email;
+    this.uris = uris;
+  }
+}
+class Uris {
+  company: string;
+
+  constructor(company: string) {
+    this.company = company;
+  }
+}
 
 function createDom(data: Company[]): string {
   let template: string = '<div class="container">';
@@ -38,16 +65,16 @@ function createDom(data: Company[]): string {
   return template;
 }
 
-const getData = async (page: number) => {
+const getData = async (page: number): Promise<any[]> => {
   const baseUrl: string = 'http://localhost:3000';
 
   const queryCompanies: string = `/companies?_page=${page}&_limit=${limit}`;
   const queryUsers: string = `/users`;
 
-  const resCompanies = await fetch(baseUrl + queryCompanies);
+  const resCompanies: Response = await fetch(baseUrl + queryCompanies);
   const dataCompanies = await resCompanies.json();
 
-  const resUsers = await fetch(baseUrl + queryUsers);
+  const resUsers: Response = await fetch(baseUrl + queryUsers);
   const dataUsers = await resUsers.json();
 
   return [dataCompanies, dataUsers];
@@ -61,7 +88,7 @@ function prepareData(companies: Company[], users: User[]): [] {
 
   return data.sort((a: any , b: any) => b.users.length - a.users.length);
 }
-function loadData() {
+function loadData(): void {
   getData(currentPage)
     .then(([companies, users]) => {
       const dataToRender = prepareData(companies, users);
