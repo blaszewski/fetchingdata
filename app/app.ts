@@ -1,3 +1,6 @@
+import {Company} from "./Company";
+import {User} from "./User";
+
 const limit: number = 20;
 let currentPage: number = 1;
 
@@ -5,41 +8,11 @@ const next: any = document.querySelector('.next');
 const prev: any = document.querySelector('.prev');
 const list: any = document.querySelector('.list');
 
-class Company {
-  name: string;
-  users: User[];
-  uri: string;
-
-  constructor(name: string, users: User[], uri: string) {
-    this.name = name;
-    this.users = users;
-    this.uri = uri;
-  }
-}
-class User {
-  name: string;
-  email: string;
-  uris: Uris;
-
-  constructor(name: string, email: string, uris: Uris) {
-    this.name = name;
-    this.email = email;
-    this.uris = uris;
-  }
-}
-class Uris {
-  company: string;
-
-  constructor(company: string) {
-    this.company = company;
-  }
-}
-
 function createDom(data: Company[]): string {
   let template: string = '<div class="container">';
 
   for (const [index, company] of data.entries()) {
-  console.log(company.name, company.users);
+  // console.log(company.name, company.users);
     template += `<div class="d-flex flex-column">
                <button type="button" class="p-2 list-group-item list-group-item-action text-center" data-toggle="collapse" href="#collapse${index}" role="button" aria-expanded="false" aria-controls="collapse${index}">
                    ${company.name} 

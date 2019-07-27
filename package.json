@@ -1,0 +1,25 @@
+{
+  "name": "fetchingdata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "systemjs": "^2.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^17.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blaszewski/fetchingdata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blaszewski/fetchingdata/issues"
+  },
+  "homepage": "https://github.com/blaszewski/fetchingdata#readme"
+}
