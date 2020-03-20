@@ -1,18 +1,16 @@
-import {Company} from "./Company";
-import {User} from "./User";
+import { Company, User } from "./interfaces";
 
 const limit: number = 20;
 let currentPage: number = 1;
 
-const next: any = document.querySelector('.next');
-const prev: any = document.querySelector('.prev');
-const list: any = document.querySelector('.list');
+const next = document.querySelector('.next') as HTMLElement;
+const prev = document.querySelector('.prev') as HTMLElement;
+const list = document.querySelector('.list') as HTMLElement;
 
 function createDom(data: Company[]): string {
   let template: string = '<div class="container">';
 
   for (const [index, company] of data.entries()) {
-  // console.log(company.name, company.users);
     template += `<div class="d-flex flex-column">
                <button type="button" class="p-2 list-group-item list-group-item-action text-center" data-toggle="collapse" href="#collapse${index}" role="button" aria-expanded="false" aria-controls="collapse${index}">
                    ${company.name} 
@@ -59,8 +57,9 @@ function prepareData(companies: Company[], users: User[]): [] {
     return company;
   });
 
-  return data.sort((a: any , b: any) => b.users.length - a.users.length);
+  return data.sort((a: any, b: any) => b.users.length - a.users.length);
 }
+
 function loadData(): void {
   getData(currentPage)
     .then(([companies, users]) => {
